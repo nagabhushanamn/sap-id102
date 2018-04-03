@@ -62,3 +62,33 @@ ECMAScript-2015 or ES6
 
                     ==> Node.js runtime implemented this standard as default-module standard,
                         not browsers
+
+
+            --------------------------------------------------------------
+
+
+            NPM ( Node Package Manager )
+            ----------------------------
+
+                  -- > CLI tool , runs in Node.js 
+
+                  why we need ?
+
+                  --> to publish/install javascript packages from 'NPM repository'
+                  
+            --------------------------------------------------------------
+
+
+
+            ECMAScript ( ES ) modules standard
+            ------------------------------------                 
+
+
+              => by default , every .js-file is module
+              => all variables & functions in a js-file are private by default.
+              => to abstract/export any member(s) to other modules , use 'export' keyword
+              => to require/import any module , use 'import' keyword
+              => can group related modules into packages with description file ( package.json )
+
+
+               imp-note : neither browser or node.js implemented this module standard   

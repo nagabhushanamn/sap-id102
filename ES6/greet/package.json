@@ -1,8 +1,0 @@
-{
-    "name": "sapient-gmi-greet",
-    "version": "1.0.0",
-    "author": {
-        "name": "Nag-trainer"
-    },
-    "main": "index.js"
-}
