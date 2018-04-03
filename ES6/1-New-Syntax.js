@@ -296,27 +296,48 @@
 //-------------------------------------------------------------
 
 
-let sayName1 = function () {
-    console.dir('im ' + this.name);
-}
-let sayName2 = () => {
-    console.dir('im ' + this.name);
-}
-// sayName1();
-// sayName2();
+// let sayName1 = function () {
+//     console.dir('im ' + this.name);
+// }
+// let sayName2 = () => {
+//     console.dir('im ' + this.name);
+// }
+// // sayName1();
+// // sayName2();
 
-let p1 = {
-    name: 'Nag',
-    sayName: sayName1
-};
-p1.sayName();
-let p2 = {
-    name: 'Ria',
-    sayName: sayName2
-};
-p2.sayName();
-
-
+// let p1 = {
+//     name: 'Nag',
+//     sayName: sayName1
+// };
+// p1.sayName();
+// let p2 = {
+//     name: 'Ria',
+//     sayName: sayName2
+// };
+// p2.sayName();
 
 
 
+//-------------------------------------------------------------
+
+// collections
+
+// let list = [];
+
+// // in es6
+
+// let set = new Set();
+// set.add('item1');
+// set.add('item1');
+// set.add('item2');
+
+// let map = new Map();
+
+// let ow1 = { name: 'Nag' }
+// let ow2 = { name: 'Ria' }
+
+// let car1 = { name: 'fortuner' }
+// let car2 = { name: 'toy-car' }
+
+// map.set(ow1, car1);
+// map.set(ow2, car2);

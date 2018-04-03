@@ -16,3 +16,49 @@ ECMAScript-2015 or ES6
      8. symbol primitive type
      9. for-of loop
      10. arrow-function
+     11. collections
+------------------------------------------------------------------------
+
+     12. JS-modules  ( how to organiza javascript code ?)
+
+
+     problems with .js-developement, without module-standards & module-loader
+
+      --> global-naming collisions
+
+          soln: usinf 'self-executable function' pattern
+
+      --> loading dependency modules in order   is manual  
+
+
+      soln:
+
+        using good module standards & loaders
+
+
+        from third-parties
+
+        --> AMD ( Async Module definition )  spec
+
+              ==> to define new module , use 'define()'
+              ==> to load module , use 'require()'
+
+              Loader(s) : Require.js, etc..
+
+
+        --> commonJS     
+
+              => simpler module standard
+
+              rules:
+
+              => by default , every .js-file is module
+              => all variables & functions in a js-file are private by default.
+              => to abstract/export any member(s) to other modules , use 'module.exports' object
+              => to require/import any module , use 'require()' function
+              => can group related modules into packages with description file ( package.json )
+
+              imp-note:
+
+                    ==> Node.js runtime implemented this standard as default-module standard,
+                        not browsers
