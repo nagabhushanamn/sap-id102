@@ -1,0 +1,101 @@
+
+Front-End-web-application
+----------------------------
+
+    HTML ==> content
+    CSS  ==> styling
+    JavaScrit ==> behavior
+
+----------------------------------------------
+
+
+what .js-lang can do on HTML-page in browser-envi?
+
+
+
+ using browser provided Web APIs,
+ javascript-language can do any dynamic actions
+
+ all Web APIs are based on 'w3c' recommendation
+
+ APIs implemented by browser vendors & abstracted as javascript objects & functions   
+
+
+using DOM ( Document Object Model ) API
+----------------------------------------
+
+ -> can create,retreive,update,delete HTML elements ( CRUD )
+ -> can change element's inner  html/text content
+ -> can change element's style
+ -> can change element's attributes/properties
+ -> can validate all form-fields before submit.
+ -> can create rich UI-compoents
+ ...
+
+using XHR/Fetch API
+---------------------------------------
+ -> to communicate with server-side programs async,
+    then update response in existing page ( AJAX )
+
+
+using Timer API ( setTimeout(),setInterval())
+--------------------------------------------
+ -> can execute action(s) on timeout/intervals
+
+
+HTML5 APIs
+-------------
+
+    https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5
+
+
+
+problems with plain-js ( your-code + browser APIs )  
+--------------------------------------------------
+
+
+ ==> browser compatability
+ ==> performance issues ( i.e minimal DOM changes will give better perfoamnce)
+ ==> memory management  ( i.e clean un-used DOM elements from memory)
+ ==> data-binding  is manual
+ ==> code organization is manual
+
+   soln: using third-party's javascript lib & F.Ws
+
+
+   e.g
+
+     -> jQuery
+
+     MVC / MVVM based js lib & F.Ws
+
+     -> AngularJS
+     -> EmberJS
+     -> Knockout
+     -> Backbone , MarionetJS
+     -> EXTJS 
+     -> DOJO
+     -> YUI
+     ........
+
+
+
+     w3c  ==> web component spec ( draft )
+
+
+     compoent based javascript lib & F.Ws
+
+     1. ReactJS  from Facebook
+     2. Angular
+     3. Vue
+     4. Aurelia
+     .................
+     
+
+
+
+
+
+
+
+
