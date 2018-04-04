@@ -17,8 +17,8 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: "style-loader" },
                     { loader: "css-loader" },
+                    { loader: "style-loader" }
                 ]
             },
             {
@@ -30,8 +30,6 @@ module.exports = {
 
     devServer: {
         contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        port: 9000
     }
 
 }

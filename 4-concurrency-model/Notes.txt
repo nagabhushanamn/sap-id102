@@ -1,0 +1,24 @@
+
+
+concurrency-model in javascript-lang
+------------------------------------
+
+  .js-lang
+
+    ==> all IO operations ar 'non-blocking'
+    ==> single-threaded lang , we can execute actions concurrenctly
+
+
+
+    browser e.g chrome
+
+         1. JavaScript runtime/engine    => based on ECMAScript spec
+
+                a. single-call-stack    -> to execute contexts
+                b. heap                 -> to hold objects
+
+         2. Web APIs ( DOM , XHR , Timer API , etc..)   ==> w3c recommendation
+         3. Event-Queue
+         4. Event-Loop
+
+         
