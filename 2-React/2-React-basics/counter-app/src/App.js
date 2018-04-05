@@ -15,9 +15,9 @@ class App extends Component {
     }
   }
 
-  incrementTotalCount() {
+  incrementTotalCount(value) {
     let { totalCount } = this.state;
-    this.setState({ totalCount: totalCount + 1 });
+    this.setState({ totalCount: totalCount + Number.parseInt(value) });
   }
 
   render() {
@@ -29,9 +29,9 @@ class App extends Component {
         <div className="panel panel-default">
           <div className="panel-heading"> App component  : <span className="badge">{totalCount}</span> </div>
           <div className="panel-body">
-            <HitButton label="+1" onHit={() => { this.incrementTotalCount() }} />
-            <HitButton label="+10" onHit={() => { this.incrementTotalCount() }} />
-            <HitButton label="-10" onHit={() => { this.incrementTotalCount() }} />
+            <HitButton label="+1" onHit={(value) => { this.incrementTotalCount(value) }} />
+            <HitButton label="+10" onHit={(value) => { this.incrementTotalCount(value) }} />
+            <HitButton label="-10" onHit={(value) => { this.incrementTotalCount(value) }} />
             <TotalCountDisplay value={totalCount} />
           </div>
         </div>
