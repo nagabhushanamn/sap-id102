@@ -6,3 +6,11 @@ React component
 
     - props  ==>  (any data from parent-component to child-componenet )
     - state  ==>  (internal data , based on that it will render )
+
+
+
+  3 phases
+
+  phase-1 : Mounting   ==> initial rendering
+  phase-2 : Updating   ==> re rendering  
+  phase-3 : UnMounting   ==> destroy
