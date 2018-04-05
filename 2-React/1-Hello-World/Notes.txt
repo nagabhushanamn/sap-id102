@@ -1,0 +1,16 @@
+
+
+
+HTML Componenet / Element
+---------------------------
+
+  ==> html tag(s) are instance(s) HTMLXXXElement class
+
+
+    html-component
+
+        - props/attributes  ==> ( data given by parent component to child ) 
+        - state             ==> internal data, based on that it will render
+
+        note : when component state changes, always get re-render
+

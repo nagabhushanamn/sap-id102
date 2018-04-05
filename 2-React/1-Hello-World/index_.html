@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">HTML components</div>
+        <div id="box" style="border: 1px solid red;padding: 5px;">
+            <input id="inp"
+                   placeholder="enter input" 
+                   type="number" 
+                   onchange="changeHandler()" />
+            <hr/>
+            <span class="badge" id="spanEle">0</span>
+        </div>
+    </div>
+    <script>
+        let n = 0;
+        setInterval(() => {
+            n++;
+            inp.value = n;
+            inp.dispatchEvent(new Event('change'));
+        }, 3000);
+        function changeHandler() {
+            spanEle.innerText = n;
+        }
+    </script>
+
+</body>
+
+</html>

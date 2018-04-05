@@ -1,0 +1,8 @@
+
+
+
+React component
+-----------------
+
+    - props  ==>  (any data from parent-component to child-componenet )
+    - state  ==>  (internal data , based on that it will render )
