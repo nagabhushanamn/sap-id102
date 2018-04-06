@@ -8,6 +8,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      cart: [],
       products: [
         {
           id: 1,
@@ -37,6 +38,12 @@ class App extends Component {
     }
   }
 
+  addToCart(product) {
+    let { cart } = this.state;
+    cart = cart.concat(product);
+    this.setState({ cart })
+  }
+
   addNewReview(id, newReview) {
     let { products } = this.state;
     products = products.map((product) => {
@@ -52,17 +59,24 @@ class App extends Component {
     let { products } = this.state;
     return products.map((product, idx) => {
       return (
-        <Product product={product} idx={idx} 
-                onNewReview={(id,newReview)=>{this.addNewReview(id,newReview)}}/>
+        <Product product={product}
+          idx={idx}
+          onBuy={(product) => { this.addToCart(product) }}
+          onNewReview={(id, newReview) => { this.addNewReview(id, newReview) }} />
       );
     });
   }
   render() {
+    let { cart } = this.state;
     return (
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <a href="#" className="navbar-brand">shopIT</a>
         </nav>
+        <hr />
+        <span className="badge badge-dark">{cart.length}</span> item(s) in cart
+        | <a href> View Cart </a>
+        <hr />
         <div className="list-group">
           {this.renderProducts()}
         </div>

@@ -25,7 +25,7 @@ class Product extends Component {
 
     renderTabCard(product) {
         let { tab } = this.state;
-        let {onNewReview}=this.props;
+        let { onNewReview } = this.props;
         let card;
         switch (tab) {
             case 1:
@@ -38,9 +38,9 @@ class Product extends Component {
                 card = (
                     <div>
                         {this.renderReviews()}
-                        <hr/>
-                        <ReviewForm 
-                           onNewReview={(newReview)=>{onNewReview(product.id,newReview)}}/>
+                        <hr />
+                        <ReviewForm
+                            onNewReview={(newReview) => { onNewReview(product.id, newReview) }} />
                     </div>)
                 break;
             default:
@@ -50,8 +50,9 @@ class Product extends Component {
     }
 
     renderBuyBtn(product) {
+        let { onBuy } = this.props;
         if (product.canBuy) {
-            return <button className="btn btn-primary">buy</button>
+            return <button onClick={() => { onBuy(product) }} className="btn btn-primary">buy</button>
         } else {
             return null;
         }
