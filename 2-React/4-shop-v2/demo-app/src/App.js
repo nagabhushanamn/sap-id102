@@ -10,30 +10,50 @@ class App extends Component {
     this.state = {
       products: [
         {
+          id: 1,
           name: 'Laptop',
           price: 198000,
           description: 'New Mac pro',
           canBuy: true,
-          image: 'images/Laptop.png'
+          image: 'images/Laptop.png',
+          reviews: [
+            { stars: 5, author: 'nag@gmail.com', body: 'good one' },
+            { stars: 2, author: 'indu@gmail.com', body: 'costly one' }
+          ]
         },
         {
+          id: 2,
           name: 'Mobile',
           price: 18000,
           description: 'New pro',
           canBuy: true,
-          image: 'images/Mobile.png'
+          image: 'images/Mobile.png',
+          reviews: [
+            { stars: 5, author: 'nag@gmail.com', body: 'good one' },
+            { stars: 2, author: 'indu@gmail.com', body: 'costly one' }
+          ]
         }
       ]
     }
   }
 
-
+  addNewReview(id, newReview) {
+    let { products } = this.state;
+    products = products.map((product) => {
+      if (product.id === id) {
+        product.reviews = product.reviews.concat(newReview);
+      }
+      return product;
+    });
+    this.setState({ products });
+  }
 
   renderProducts() {
-    let { products} = this.state;
+    let { products } = this.state;
     return products.map((product, idx) => {
       return (
-        <Product product={product} idx={idx}/>
+        <Product product={product} idx={idx} 
+                onNewReview={(id,newReview)=>{this.addNewReview(id,newReview)}}/>
       );
     });
   }

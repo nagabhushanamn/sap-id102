@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import Review from './Review';
+import ReviewForm from './ReviewForm';
 
 class Product extends Component {
     constructor(props) {
@@ -13,8 +15,17 @@ class Product extends Component {
         this.setState({ tab });
     }
 
+    renderReviews() {
+        let { product } = this.props;
+        return product.reviews.map((review, idx) => {
+            return <Review review={review} key={idx} />
+        });
+
+    }
+
     renderTabCard(product) {
         let { tab } = this.state;
+        let {onNewReview}=this.props;
         let card;
         switch (tab) {
             case 1:
@@ -24,7 +35,13 @@ class Product extends Component {
                 card = (<div>Not Yet</div>)
                 break;
             case 3:
-                card = <div>None Yet</div>
+                card = (
+                    <div>
+                        {this.renderReviews()}
+                        <hr/>
+                        <ReviewForm 
+                           onNewReview={(newReview)=>{onNewReview(product.id,newReview)}}/>
+                    </div>)
                 break;
             default:
                 card = null;
@@ -41,8 +58,8 @@ class Product extends Component {
     }
 
     render() {
-        let { product,idx } = this.props;
-        let {tab}=this.state;
+        let { product, idx } = this.props;
+        let { tab } = this.state;
         return (
             <div>
                 <div className="list-group-item" key={idx}>
