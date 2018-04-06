@@ -1,0 +1,34 @@
+{
+  "name": "Review",
+  "plural": "reviews",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true,
+    "mysql":{
+      "table":"REVIEWS"
+    }
+  },
+  "properties": {
+    "stars": {
+      "type": "number",
+      "required": true
+    },
+    "author": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "product": {
+      "type": "belongsTo",
+      "model": "Product",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
