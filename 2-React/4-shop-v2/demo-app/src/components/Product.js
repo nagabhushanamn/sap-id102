@@ -7,25 +7,51 @@ class Product extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tab: 1
+            tab: 1,
+            reviews: []
         }
     }
 
-    changeTab(tab) {
-        this.setState({ tab });
+    addNewReview(review) {
+        let { product } = this.props;
+        const api = `http://localhost:8080/api/products/${product.id}/reviews`;
+        fetch(api, {
+            method: 'POST',
+            body: JSON.stringify(review),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(resp => resp.json())
+            .then(review => {
+                this.setState({ reviews: this.state.reviews.concat(review) });
+            })
+
     }
 
+    changeTab(tab) {
+        if (tab === 3) {
+            let { product } = this.props;
+            const api = `http://localhost:8080/api/products/${product.id}/reviews`;
+            fetch(api)
+                .then(resp => resp.json())
+                .then(reviews => {
+                    this.setState({ tab, reviews });
+                })
+        } else {
+            this.setState({ tab });
+        }
+
+    }
     renderReviews() {
+        let { reviews } = this.state;
         let { product } = this.props;
-        return product.reviews.map((review, idx) => {
+        return reviews.map((review, idx) => {
             return <Review review={review} key={idx} />
         });
-
     }
 
     renderTabCard(product) {
         let { tab } = this.state;
-        let { onNewReview } = this.props;
         let card;
         switch (tab) {
             case 1:
@@ -40,7 +66,7 @@ class Product extends Component {
                         {this.renderReviews()}
                         <hr />
                         <ReviewForm
-                            onNewReview={(newReview) => { onNewReview(product.id, newReview) }} />
+                            onNewReview={(newReview) => { this.addNewReview(newReview) }} />
                     </div>)
                 break;
             default:
@@ -51,7 +77,7 @@ class Product extends Component {
 
     renderBuyBtn(product) {
         let { onBuy } = this.props;
-        if (product.canBuy) {
+        if (true) {
             return <button onClick={() => { onBuy(product) }} className="btn btn-primary">buy</button>
         } else {
             return null;

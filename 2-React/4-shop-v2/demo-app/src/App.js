@@ -11,33 +11,17 @@ class App extends Component {
     this.state = {
       cart: [],
       isCartOpen: false,
-      products: [
-        {
-          id: 1,
-          name: 'Laptop',
-          price: 198000,
-          description: 'New Mac pro',
-          canBuy: true,
-          image: 'images/Laptop.png',
-          reviews: [
-            { stars: 5, author: 'nag@gmail.com', body: 'good one' },
-            { stars: 2, author: 'indu@gmail.com', body: 'costly one' }
-          ]
-        },
-        {
-          id: 2,
-          name: 'Mobile',
-          price: 18000,
-          description: 'New pro',
-          canBuy: true,
-          image: 'images/Mobile.png',
-          reviews: [
-            { stars: 5, author: 'nag@gmail.com', body: 'good one' },
-            { stars: 2, author: 'indu@gmail.com', body: 'costly one' }
-          ]
-        }
-      ]
+      products: []
     }
+  }
+
+  componentDidMount() {
+    const api = "http://localhost:8080/api/products";
+    fetch(api)
+      .then(resp => resp.json())
+      .then(products => {
+        this.setState({ products })
+      })
   }
 
   toggleCart() {
@@ -51,17 +35,6 @@ class App extends Component {
     this.setState({ cart })
   }
 
-  addNewReview(id, newReview) {
-    let { products } = this.state;
-    products = products.map((product) => {
-      if (product.id === id) {
-        product.reviews = product.reviews.concat(newReview);
-      }
-      return product;
-    });
-    this.setState({ products });
-  }
-
   renderProducts() {
     let { products, isCartOpen, cart } = this.state;
     if (isCartOpen) {
@@ -72,7 +45,7 @@ class App extends Component {
           <Product product={product}
             idx={idx}
             onBuy={(product) => { this.addToCart(product) }}
-            onNewReview={(id, newReview) => { this.addNewReview(id, newReview) }} />
+            />
         );
       });
     }
