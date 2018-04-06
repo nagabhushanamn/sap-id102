@@ -3,12 +3,14 @@ import React, { Component } from 'react';
 // import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Product from './components/Product';
+import ViewCart from './components/ViewCart';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       cart: [],
+      isCartOpen: false,
       products: [
         {
           id: 1,
@@ -38,6 +40,11 @@ class App extends Component {
     }
   }
 
+  toggleCart() {
+    let { isCartOpen } = this.state;
+    this.setState({ isCartOpen: !isCartOpen });
+  }
+
   addToCart(product) {
     let { cart } = this.state;
     cart = cart.concat(product);
@@ -56,18 +63,22 @@ class App extends Component {
   }
 
   renderProducts() {
-    let { products } = this.state;
-    return products.map((product, idx) => {
-      return (
-        <Product product={product}
-          idx={idx}
-          onBuy={(product) => { this.addToCart(product) }}
-          onNewReview={(id, newReview) => { this.addNewReview(id, newReview) }} />
-      );
-    });
+    let { products, isCartOpen, cart } = this.state;
+    if (isCartOpen) {
+      return <ViewCart items={cart} />
+    } else {
+      return products.map((product, idx) => {
+        return (
+          <Product product={product}
+            idx={idx}
+            onBuy={(product) => { this.addToCart(product) }}
+            onNewReview={(id, newReview) => { this.addNewReview(id, newReview) }} />
+        );
+      });
+    }
   }
   render() {
-    let { cart } = this.state;
+    let { cart, isCartOpen } = this.state;
     return (
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -75,7 +86,8 @@ class App extends Component {
         </nav>
         <hr />
         <span className="badge badge-dark">{cart.length}</span> item(s) in cart
-        | <a href> View Cart </a>
+        | <a href="#" onClick={() => { this.toggleCart() }}> {isCartOpen ? 'View Products' : 'View Cart'} </a>
+        <hr />
         <hr />
         <div className="list-group">
           {this.renderProducts()}
