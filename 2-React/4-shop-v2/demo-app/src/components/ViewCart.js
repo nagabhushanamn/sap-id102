@@ -3,14 +3,16 @@ import React, { Component } from 'react';
 class ViewCart extends Component {
 
     renderItems() {
-        let { items } = this.props;
-        return items.map((item, idx) => {
+        let { cart } = this.props;
+        let keys = Object.keys(cart);
+        return keys.map((key, idx) => {
             return (
                 <tr>
-                    <td>{idx+1}</td>
-                    <td>{item.name}</td>
-                    <td>&#8377;{item.price}</td>
-                    <td>qty</td>
+                    <td>{idx + 1}</td>
+                    <td>{cart[key].item.name}</td>
+                    <td>{cart[key].count}</td>
+                    <td>&#8377;{cart[key].item.price}</td>
+                    <td>&#8377;{cart[key].item.price * cart[key].count}</td>
                 </tr>
             );
         });

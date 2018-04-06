@@ -11,40 +11,46 @@ class Product extends Component {
             reviews: []
         }
     }
-
     addNewReview(review) {
-        let { product } = this.props;
-        const api = `http://localhost:8080/api/products/${product.id}/reviews`;
-        fetch(api, {
-            method: 'POST',
-            body: JSON.stringify(review),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(resp => resp.json())
-            .then(review => {
-                this.setState({ reviews: this.state.reviews.concat(review) });
-            })
+        this.setState({ reviews: this.state.reviews.concat(review) });
+        
+        // API-call
+        //let { product } = this.props;
+        // const api = `http://localhost:8080/api/products/${product.id}/reviews`;
+        // const promise = fetch(api, {
+        //     method: 'POST',
+        //     body: JSON.stringify(review),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        // promise
+        //     .then(resp => resp.json())
+        //     .then(review => {
+        //         this.setState({ reviews: this.state.reviews.concat(review) });
+        //     })
 
     }
-
     changeTab(tab) {
-        if (tab === 3) {
-            let { product } = this.props;
-            const api = `http://localhost:8080/api/products/${product.id}/reviews`;
-            fetch(api)
-                .then(resp => resp.json())
-                .then(reviews => {
-                    this.setState({ tab, reviews });
-                })
-        } else {
-            this.setState({ tab });
-        }
+
+        this.setState({ tab });
+
+        // API-call
+        // if (tab === 3) {
+        //     let { product } = this.props;
+        //     const api = `http://localhost:8080/api/products/${product.id}/reviews`;
+        //     fetch(api)
+        //         .then(resp => resp.json())
+        //         .then(reviews => {
+        //             this.setState({ tab, reviews });
+        //         })
+        // } else {
+        //     this.setState({ tab });
+        // }
 
     }
     renderReviews() {
         let { reviews } = this.state;
-        let { product } = this.props;
         return reviews.map((review, idx) => {
             return <Review review={review} key={idx} />
         });
@@ -65,8 +71,7 @@ class Product extends Component {
                     <div>
                         {this.renderReviews()}
                         <hr />
-                        <ReviewForm
-                            onNewReview={(newReview) => { this.addNewReview(newReview) }} />
+                        <ReviewForm onNewReview={(newReview) => { this.addNewReview(newReview) }} />
                     </div>)
                 break;
             default:
@@ -100,9 +105,9 @@ class Product extends Component {
                             {this.renderBuyBtn(product)}
                             <hr />
                             <ul className="nav nav-tabs">
-                                <li className="nav-item"><a onClick={() => { this.changeTab(1) }} className={classnames({ 'nav-link': true, 'active': tab === 1 })} href>Description</a></li>
-                                <li className="nav-item"><a onClick={() => { this.changeTab(2) }} className={classnames({ 'nav-link': true, 'active': tab === 2 })} href>Specification</a></li>
-                                <li className="nav-item"><a onClick={() => { this.changeTab(3) }} className={classnames({ 'nav-link': true, 'active': tab === 3 })} href>Reviews</a></li>
+                                <li className="nav-item"><a onClick={() => { this.changeTab(1) }} className={classnames({ 'nav-link': true, 'active': tab === 1 })} href="#">Description</a></li>
+                                <li className="nav-item"><a onClick={() => { this.changeTab(2) }} className={classnames({ 'nav-link': true, 'active': tab === 2 })} href="#">Specification</a></li>
+                                <li className="nav-item"><a onClick={() => { this.changeTab(3) }} className={classnames({ 'nav-link': true, 'active': tab === 3 })} href="#">Reviews</a></li>
                             </ul>
                             {this.renderTabCard(product)}
                         </div>
