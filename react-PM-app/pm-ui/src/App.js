@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 import Home from './components/Home';
 
 import {
@@ -18,17 +18,17 @@ class App extends Component {
         <Router>
           <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-              <Link class="navbar-brand" to="/">PM</Link>
+              <Link className="navbar-brand" to="/">PM</Link>
             </nav>
             <hr />
             <div className="row">
               <div className="col-sm-3 col-md-3">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
+                <ul className="nav flex-column">
+                  <li className="nav-item">
                     <Link className="nav-link" to="/view-all">View All</Link>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Add-New</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/#">Add-New</a>
                   </li>
                 </ul>
               </div>
