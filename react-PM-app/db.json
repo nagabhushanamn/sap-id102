@@ -1,20 +1,33 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Laptop",
-            "price": 198000.00,
-            "make-date": null,
-            "image": "images/Laptop.png",
-            "description": "New Mac pro"
-        },
-        {
-            "id": 2,
-            "name": "Mobile",
-            "price": 198000.00,
-            "make-date": null,
-            "image": "images/Mobile.png",
-            "description": "New  pro"
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Laptop",
+      "price": 198000,
+      "make-date": null,
+      "image": "images/Laptop.png",
+      "description": "New Mac pro"
+    },
+    {
+      "id": 2,
+      "price": 0
+    },
+    {
+      "id": 3
+    },
+    {
+      "name": "New One",
+      "price": 0,
+      "description": "new item",
+      "make-date": "12/12/2018",
+      "id": 4
+    },
+    {
+      "name": "New One",
+      "price": "100",
+      "description": "new item",
+      "make-date": "12/12/2018",
+      "id": 5
+    }
+  ]
 }

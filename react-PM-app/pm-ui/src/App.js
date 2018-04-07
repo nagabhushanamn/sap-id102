@@ -9,6 +9,7 @@ import {
   Link
 } from 'react-router-dom'
 import ProductList from './components/ProductList';
+import ProductForm from './components/ProductForm';
 
 
 class App extends Component {
@@ -28,13 +29,15 @@ class App extends Component {
                     <Link className="nav-link" to="/view-all">View All</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/#">Add-New</a>
+                    <Link className="nav-link" to="/add-new">Add New</Link>
                   </li>
                 </ul>
               </div>
               <div className="col-sm-9 col-md-9">
                 <Route exact path="/" component={Home} />
                 <Route path="/view-all" component={ProductList} />
+                <Route path="/add-new" component={ProductForm} />
+                <Route path="/edit-product/:id" component={ProductForm} />
               </div>
             </div>
           </div>

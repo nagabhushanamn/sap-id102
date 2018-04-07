@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import store from '../store';
 import { loadProducts } from '../actions/products';
+import 'font-awesome/css/font-awesome.css';
+import { Link } from 'react-router-dom';
 
 class ProductList extends Component {
     constructor(props) {
@@ -16,6 +18,15 @@ class ProductList extends Component {
         });
         store.dispatch(loadProducts());
     }
+    deleteItem(id) {
+        fetch(`http://localhost:8181/products/${id}`, { method: 'DELETE' })
+            .then(resp => resp.json())
+            .then(r => {
+                let { products } = this.state;
+                products = products.filter(product => product.id !== id)
+                this.setState({ products });
+            })
+    }
     renderProducts() {
         let { products } = this.state;
         return products.map((product, idx) => {
@@ -25,6 +36,8 @@ class ProductList extends Component {
                     <td>{product.name}</td>
                     <td>{product.price}</td>
                     <td>{product.make_date}</td>
+                    <td><Link to={`edit-product/${product.id}`}><i className="fa fa-edit"></i></Link></td>
+                    <td><a href="/#" onClick={() => { this.deleteItem(product.id) }}><i className="fa fa-trash"></i></a></td>
                 </tr>
             );
         });
