@@ -5,7 +5,7 @@ class Review extends Component {
     renderStars(n) {
         let stars = [];
         for (let i = 0; i < n; i++) {
-            stars.push(<i style={{ color: '' }} className="fa fa-star"></i>)
+            stars.push(<i key={i} style={{ color: '' }} className="fa fa-star"></i>)
         }
         return stars;
     }
@@ -15,7 +15,7 @@ class Review extends Component {
             <div>
                 <div className="row">
                     <div className="col-sm-8 col-md-8">
-                        <div class="alert alert-dark" role="alert">
+                        <div className="alert alert-dark" role="alert">
                             {this.renderStars(review.stars)}&mdash;{review.author}
                             <hr />
                             <p>{review.body}</p>

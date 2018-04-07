@@ -5,17 +5,21 @@ class ViewCart extends Component {
     renderItems() {
         let { cart } = this.props;
         let keys = Object.keys(cart);
-        return keys.map((key, idx) => {
-            return (
-                <tr>
-                    <td>{idx + 1}</td>
-                    <td>{cart[key].item.name}</td>
-                    <td>{cart[key].count}</td>
-                    <td>&#8377;{cart[key].item.price}</td>
-                    <td>&#8377;{cart[key].item.price * cart[key].count}</td>
-                </tr>
-            );
-        });
+        if (keys.length === 0) {
+            return;
+        } else {
+            return keys.map((key, idx) => {
+                return (
+                    <tr key={idx}>
+                        <td>{idx + 1}</td>
+                        <td>{cart[key].item.name}</td>
+                        <td>{cart[key].qty}</td>
+                        <td>&#8377;{cart[key].item.price}</td>
+                        <td>&#8377;{cart[key].item.price * cart[key].qty}</td>
+                    </tr>
+                );
+            });
+        }
     }
     render() {
         return (

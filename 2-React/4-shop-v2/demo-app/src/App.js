@@ -13,18 +13,19 @@ class App extends Component {
       cart: {},
       isCartOpen: false,
       products: [
-        { id: 1, name: 'Laptop', price: 198000, description: 'New Mac Pro', image: 'images/Laptop.png' },
-        { id: 2, name: 'Mobile', price: 198000, description: 'New Pro', image: 'images/Mobile.png' }
+        //{ id: 1, name: 'Laptop', price: 198000, description: 'New Mac Pro', image: 'images/Laptop.png' },
+        //{ id: 2, name: 'Mobile', price: 198000, description: 'New Pro', image: 'images/Mobile.png' }
       ]
     }
   }
   componentDidMount() {
-    // const api = "http://localhost:8080/api/products";
-    // fetch(api)
-    //   .then(resp => resp.json())
-    //   .then(products => {
-    //     this.setState({ products })
-    //   })
+    // ==> API-call
+    const api = "http://localhost:8080/api/products";
+    fetch(api)
+      .then(resp => resp.json())
+      .then(products => {
+        this.setState({ products })
+      })
   }
 
   toggleCart() {
@@ -35,9 +36,9 @@ class App extends Component {
   addToCart(product) {
     let { cart } = this.state;
     if (cart[product.id]) {
-      cart[product.id] = { item: product, count: cart[product.id].count + 1 }
+      cart[product.id] = { item: product, qty: cart[product.id].qty + 1 }
     } else {
-      cart[product.id] = { item: product, count: 1 }
+      cart[product.id] = { item: product, qty: 1 }
     }
     this.setState({ cart })
   }
@@ -64,11 +65,11 @@ class App extends Component {
     return (
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a href="#" className="navbar-brand">shopIT</a>
+          <a href="/#" className="navbar-brand">shopIT</a>
         </nav>
         <hr />
         <span className="badge badge-dark">{Object.keys(cart).length}</span> item(s) in cart
-        | <a href="#" onClick={() => { this.toggleCart() }}> {isCartOpen ? 'View Products' : 'View Cart'} </a>
+        | <a href="/#" onClick={() => { this.toggleCart() }}> {isCartOpen ? 'View Products' : 'View Cart'} </a>
         <hr />
         <hr />
         <div className="list-group">
