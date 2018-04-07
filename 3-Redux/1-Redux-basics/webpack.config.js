@@ -7,7 +7,9 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    plugins: [new HtmlWebpackPlugin()],
+    plugins: [new HtmlWebpackPlugin({
+        template:'src/index.html'
+    })],
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
