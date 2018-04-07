@@ -1,0 +1,20 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Laptop",
+            "price": 198000.00,
+            "make-date": null,
+            "image": "images/Laptop.png",
+            "description": "New Mac pro"
+        },
+        {
+            "id": 2,
+            "name": "Mobile",
+            "price": 198000.00,
+            "make-date": null,
+            "image": "images/Mobile.png",
+            "description": "New  pro"
+        }
+    ]
+}
